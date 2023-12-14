@@ -1,19 +1,20 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Http;
+using OnionArchitecture.Application.Bases;
 using OnionArchitecture.Application.Features.Products.Rules;
+using OnionArchitecture.Application.Interfaces.AutoMapper;
 using OnionArchitecture.Application.Interfaces.UnitOfWorks;
 using OnionArchitecture.Domain.Entites;
 using System.Text;
 
 namespace OnionArchitecture.Application.Features.Products.Command.CreateProductCommandRequest
 {
-    public class CreateProductCommandHandler : IRequestHandler<CreateProductCommandRequest, Unit>
+    public class CreateProductCommandHandler :BaseHandler, IRequestHandler<CreateProductCommandRequest, Unit>
     {
-        private readonly IUnitOfWork unitOfWork;
         private readonly ProductRules productRules;
 
-        public CreateProductCommandHandler(IUnitOfWork unitOfWork, ProductRules productRules)
+        public CreateProductCommandHandler( ProductRules productRules, IMapper mapper, IUnitOfWork unitOfWork, IHttpContextAccessor httpContextAccessor): base(mapper, unitOfWork, httpContextAccessor)
         {
-            this.unitOfWork = unitOfWork;
             this.productRules = productRules;
         }
         public async Task<Unit> Handle(CreateProductCommandRequest request, CancellationToken cancellationToken)

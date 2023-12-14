@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using OnionArchitecture.Application.Bases;
 using OnionArchitecture.Application.Beheviors;
 using OnionArchitecture.Application.Exceptions;
+using OnionArchitecture.Application.Features.Auth.Rules;
 using OnionArchitecture.Application.Features.Products.Rules;
 using System.Globalization;
 using System.Reflection;
@@ -17,6 +18,7 @@ namespace OnionArchitecture.Application
             var assembly = Assembly.GetExecutingAssembly();
 
             services.AddTransient<ExceptionMiddleware>();
+            services.AddTransient<AuthRules>();
 
             services.AddRulesFromAssemblyContaining(assembly, typeof(BaseRules));
 

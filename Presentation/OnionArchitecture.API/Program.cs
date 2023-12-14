@@ -14,6 +14,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddSingleton<IHttpContextAccessor,HttpContextAccessor>();
+
 var env = builder.Environment;
 
 
@@ -37,7 +40,7 @@ builder.Services.AddSwaggerGen(c =>
         Scheme="Bearer",
         BearerFormat="JWT",
         In=ParameterLocation.Header,
-        Description="'Bearer' yazýp bir boþluk býraktýktan sonra Token'ý Girebilirsiniz \r\n\r\n Örneðin:\"Bearer erJhsmfdsdfjsfsfsf\""
+        Description="'Bearer' yazýp bir boþluk býraktýktan sonra Token'ý Girebilirsiniz \r\n\r\n Örneðin:\"Bearer eyJhsmfdsdfjsfsfsf\""
     });
     c.AddSecurityRequirement(new OpenApiSecurityRequirement() 
     {
