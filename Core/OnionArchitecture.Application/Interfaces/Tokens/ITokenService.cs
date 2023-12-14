@@ -9,12 +9,12 @@ using System.Threading.Tasks;
 
 namespace OnionArchitecture.Application.Interfaces.Tokens
 {
-    public interface ITokenServices
+    public interface ITokenService
     {
         Task<JwtSecurityToken> CreateToken(User user, IList<string> roles);
 
         string GenerateRefreshToken();
 
-        ClaimsPrincipal? GetPrincipalFromExpiredToken();
+        ClaimsPrincipal? GetPrincipalFromExpiredToken(string? token);
     }
 }
