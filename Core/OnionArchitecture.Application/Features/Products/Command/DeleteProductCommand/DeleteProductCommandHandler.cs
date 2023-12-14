@@ -1,4 +1,7 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Http;
+using OnionArchitecture.Application.Bases;
+using OnionArchitecture.Application.Interfaces.AutoMapper;
 using OnionArchitecture.Application.Interfaces.UnitOfWorks;
 using OnionArchitecture.Domain.Entites;
 using System;
@@ -9,11 +12,11 @@ using System.Threading.Tasks;
 
 namespace OnionArchitecture.Application.Features.Products.Command.DeleteProductCommand
 {
-    public class DeleteProductCommandHandler : IRequestHandler<DeleteProductCommandRequest,Unit>
+    public class DeleteProductCommandHandler :BaseHandler, IRequestHandler<DeleteProductCommandRequest,Unit>
     {
         private readonly IUnitOfWork unitOfWork;
 
-        public DeleteProductCommandHandler(IUnitOfWork unitOfWork)
+        public DeleteProductCommandHandler(IMapper mapper, IUnitOfWork unitOfWork, IHttpContextAccessor httpContextAccessor) : base(mapper, unitOfWork, httpContextAccessor)
         {
             this.unitOfWork = unitOfWork;
         }
