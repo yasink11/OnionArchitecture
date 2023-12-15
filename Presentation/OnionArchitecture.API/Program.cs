@@ -1,4 +1,4 @@
-using OnionArchitecture.Persistance;
+ï»¿using OnionArchitecture.Persistance;
 using OnionArchitecture.Application;
 using OnionArchitecture.Infrastructure;
 using OnionArchitecture.Mapper;
@@ -32,7 +32,7 @@ builder.Services.AddCustomMapper();
 
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "OnionArchitecture API", Version = "v1", Description = "Youtube API swagger client" });
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "OnionArchitecture API", Version = "v1", Description = "" });
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
     {
         Name="Authorization",
@@ -40,7 +40,7 @@ builder.Services.AddSwaggerGen(c =>
         Scheme="Bearer",
         BearerFormat="JWT",
         In=ParameterLocation.Header,
-        Description="'Bearer' yazıp bir boşluk bıraktıktan sonra Token'ı Girebilirsiniz \r\n\r\n Örneğin:\"Bearer eyJhsmfdsdfjsfsfsf\""
+        Description="'Bearer' yazÄ±p bir boÅŸluk bÄ±raktÄ±ktan sonra Token'Ä± Girebilirsiniz \r\n\r\n Ã–rneÄŸin:\"Bearer eyJhsmfdsdfjsfsfsf\""
     });
     c.AddSecurityRequirement(new OpenApiSecurityRequirement() 
     {
@@ -57,7 +57,6 @@ builder.Services.AddSwaggerGen(c =>
         }
     });
 });
-
 
 var app = builder.Build();
 
