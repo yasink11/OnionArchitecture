@@ -5,7 +5,6 @@ using OnionArchitecture.Application.Bases;
 using OnionArchitecture.Application.Beheviors;
 using OnionArchitecture.Application.Exceptions;
 using OnionArchitecture.Application.Features.Auth.Rules;
-using OnionArchitecture.Application.Features.Products.Rules;
 using System.Globalization;
 using System.Reflection;
 
@@ -29,6 +28,7 @@ namespace OnionArchitecture.Application
             ValidatorOptions.Global.LanguageManager.Culture = new CultureInfo("tr");
 
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(FluentValidationBehevior<,>));
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RedisCacheBehevior<,>));
         }
 
         private static IServiceCollection AddRulesFromAssemblyContaining(

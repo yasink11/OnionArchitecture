@@ -7,3 +7,4 @@ namespace OnionArchitecture.Application.Features.Auth.Exceptions
         public EmailOrPasswordShouldNotBeInvalidException() : base("Kullanıcı adı veya şifre yanlıştır.") { }
     }
 }
+
